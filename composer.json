@@ -1,0 +1,56 @@
+{
+    "name": "luinuxscl/ai-posts",
+    "description": "Laravel package para la creación secuencial de posts para WordPress con estados definidos",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luis Sepulveda",
+            "email": "lsepulveda@outlook.com",
+            "homepage": "https://github.com/luinuxscl",
+            "role": "developer"
+        }
+    ],
+    "homepage": "https://like.cl",
+    "keywords": [
+        "laravel",
+        "wordpress",
+        "posts",
+        "state-machine",
+        "ai"
+    ],
+    "require": {
+        "php": "^8.1|^8.2|^8.3",
+        "illuminate/support": "^10.0|^11.0|^12.0",
+        "illuminate/database": "^10.0|^11.0|^12.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpunit/phpunit": "^10.0|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Luinuxscl\\AiPosts\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Luinuxscl\\AiPosts\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Luinuxscl\\AiPosts\\AiPostsServiceProvider"
+            ],
+            "aliases": {
+                "AiPosts": "Luinuxscl\\AiPosts\\Facades\\AiPosts"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,123 @@
+# Principios Generales de Desarrollo para Paquetes Laravel
+
+Este documento establece las reglas y principios fundamentales que guiarán el desarrollo de cualquier paquete Laravel creado bajo estas directrices. Reemplaza `[Nombre del Paquete]` con el nombre específico del paquete en cada instancia.
+
+## Principios Fundamentales
+
+1.  **Simplicidad como Prioridad**:
+
+    - El código más sencillo suele ser el mejor.
+    - Implementar únicamente la funcionalidad estrictamente necesaria para el propósito del paquete.
+    - Evitar la sobrecarga de características ("feature creep").
+
+2.  **Código Limpio y Mantenible**:
+
+    - Seguir los principios SOLID para una arquitectura robusta y flexible.
+    - Utilizar patrones de diseño reconocidos y apropiados cuando aporten claridad.
+    - Priorizar la legibilidad y la claridad del código sobre construcciones excesivamente "inteligentes" o complejas.
+
+3.  **Adhesión a Estándares PSR**:
+
+    - Cumplir estrictamente con `PSR-4` para la carga automática de clases (autoloading).
+    - Seguir las convenciones de estilo de código de `PSR-12`.
+    - Mantener la consistencia del estilo en toda la base de código del paquete.
+
+4.  **Documentación Concisa y Útil**:
+    - Utilizar comentarios claros para explicar el _por qué_ del código complejo, no el _qué_.
+    - Documentar la API pública y cualquier configuración o uso no obvio.
+    - Favorecer nombres auto-descriptivos para métodos, variables y clases para reducir la necesidad de comentarios excesivos.
+
+## Estructura y Arquitectura
+
+1.  **Dominio Claro y Delimitado**:
+
+    - Definir claramente el alcance y la responsabilidad del paquete.
+    - Implementar solo los modelos y componentes esenciales para cumplir con ese propósito.
+    - Mantener la estructura de la base de datos (si aplica) lo más simple y enfocada posible.
+
+2.  **Optimización del Rendimiento**:
+
+    - Prestar especial atención al rendimiento de la lógica central o algoritmos clave del paquete.
+    - Implementar mecanismos para prevenir problemas comunes como condiciones de carrera, bucles infinitos o consumo excesivo de recursos.
+    - Considerar y definir límites razonables donde aplique (ej. profundidad de recursión, límites de procesamiento).
+
+3.  **API Pública Clara y Mínima**:
+
+    - Exponer únicamente los métodos y clases necesarios para la interacción externa con el paquete.
+    - Diseñar una fachada (`Facade`), contratos (`Contracts`) o clases de servicio que sean intuitivos y fáciles de usar.
+    - Ocultar la complejidad interna detrás de una interfaz simple.
+
+4.  **Minimizar Dependencias Externas**:
+    - Priorizar el uso de las funcionalidades proporcionadas por el framework Laravel y PHP nativo.
+    - Evaluar cuidadosamente la necesidad de cada dependencia externa. Añadir dependencias solo si aportan un valor significativo y justificado.
+    - Documentar las dependencias y sus razones.
+
+## Detalles de Implementación
+
+1.  **Nombres Descriptivos y Consistentes**:
+
+    - Utilizar una nomenclatura clara, consistente y sin ambigüedades en todo el código (clases, métodos, variables, claves de configuración, etc.).
+    - Evitar abreviaturas confusas o excesivamente cortas.
+    - Mantener la coherencia terminológica dentro del dominio del paquete.
+
+2.  **Evitar Complejidad Oculta y Sobre-Ingeniería**:
+
+    - Preferir soluciones directas y explícitas sobre abstracciones innecesarias o patrones aplicados forzosamente.
+    - No añadir capas de complejidad que no estén justificadas por requisitos claros de flexibilidad o extensibilidad.
+    - Un enfoque simple y directo es a menudo más mantenible y valioso.
+
+3.  **Manejo Robusto de Casos Límite**:
+
+    - Identificar e implementar un manejo adecuado para casos límite, entradas inesperadas o condiciones de error.
+    - Prevenir activamente y manejar situaciones que puedan llevar a estados inconsistentes, recursión infinita o agotamiento de recursos.
+
+4.  **Errores Explícitos y Útiles**:
+    - Implementar un manejo de errores claro. Lanzar excepciones específicas y descriptivas cuando sea apropiado.
+    - Proporcionar mensajes de error que ayuden al desarrollador a entender y solucionar el problema.
+    - Falla rápido ("fail fast") y explícitamente cuando las precondiciones no se cumplen o se detecta un estado inválido.
+
+# Contexto para la Creación de Packages
+
+Este documento contiene la información básica del desarrollador y otros datos relevantes que se utilizarán al crear y publicar packages. La información aquí presentada puede ser incluida en el archivo `composer.json` del package, especialmente en la sección de `authors`, para identificar al responsable y brindar puntos de contacto.
+
+## Datos del Desarrollador
+
+- **Nombre del Desarrollador:** Luis Sepulveda
+- **GitHub:** [luinuxscl](https://github.com/luinuxscl)
+- **Email:** lsepulveda@outlook.com
+- **Homepage:** [like.cl](https://like.cl)
+- **Licencia:** MIT
+- **Rol:** Developer
+
+## Uso en el Package
+
+Al crear un package (por ejemplo, para un proyecto Laravel o cualquier otro proyecto PHP) se recomienda incluir estos datos en el archivo `composer.json` para que otros desarrolladores puedan conocer el origen y la responsabilidad del package. Un ejemplo de configuración en el `composer.json` sería:
+
+```json
+{
+  "name": "luinuxscl/package-name",
+  "description": "Breve descripción del package.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Luis Sepulveda",
+      "email": "lsepulveda@outlook.com",
+      "homepage": "https://github.com/luinuxscl",
+      "role": "developer"
+    }
+  ],
+  "homepage": "https://like.cl",
+  "require": {}
+}
+```
+
+## Consideraciones Adicionales
+
+- **Formato del Nombre:** Asegurarse de que el nombre del package siga el formato `vendor/package-name`, en mi caso el vendor sera `luinuxscl` ya que es mi user de github.
+- **Documentación:** Es importante incluir documentación clara en el repositorio (por ejemplo, en el README) que explique la funcionalidad del package y las instrucciones de instalación.
+- **Licencia:** Se utilizará la licencia MIT, por lo que se debe incluir en el package el archivo de licencia correspondiente.
+- **Actualización y Mantenimiento:** Mantener actualizados los datos de contacto y la documentación para facilitar la colaboración y el soporte.
+
+## Contacto y Soporte
+
+Para más información, puedes visitar el perfil de GitHub [luinuxscl](https://github.com/luinuxscl) o la página web oficial [like.cl](https://like.cl).
